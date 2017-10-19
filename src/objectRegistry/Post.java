@@ -1,3 +1,4 @@
+package objectRegistry;
 
 public class Post {
    private  String name;

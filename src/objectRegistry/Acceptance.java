@@ -1,3 +1,4 @@
+package objectRegistry;
 
 public class  Acceptance extends RecordPatient{
     private Treatment treatment;

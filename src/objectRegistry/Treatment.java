@@ -1,3 +1,4 @@
+package objectRegistry;
 
 public class Treatment {
     private String medicament;

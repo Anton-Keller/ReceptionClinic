@@ -1,3 +1,5 @@
+package objectRegistry;
+
 public class Person {
    private String family;
    private String name;
@@ -8,13 +10,13 @@ public Person(String _family, String _name, String _patronymic){
         this.name = _name;
         this.patronymic = _patronymic;
         }
-   protected String getFamily(){
+   public String getFamily(){
         return this.family;
    }
-   protected String getName(){
+   public String getName(){
         return this.name;
    }
-   protected String getPatronymic(){
+   public String getPatronymic(){
         return this.patronymic;
    }
 
