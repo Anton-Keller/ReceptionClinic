@@ -1,4 +1,4 @@
-package myDataBase;
+package service;
 
 import objectRegistry.*;
 import java.util.ArrayList;

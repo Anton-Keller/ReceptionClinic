@@ -1,7 +1,6 @@
 package view;
 
 import logic.*;
-
 import java.util.Scanner;
 
 public class StartProgram {

@@ -1,7 +1,7 @@
 package logic;
 
 import objectRegistry.*;
-import myDataBase.Data;
+import service.Data;
 import java.util.Scanner;
 
 
@@ -36,12 +36,14 @@ public class Controller {
                    System.out.print("Введите стаж доктора: ");
                    Integer experience = read.nextInt();
                    System.out.print("Введите должность доктора: ");
-                   String post = read.next();
+                   String namePost = read.next();
                    System.out.print("Введите номер кабинета: ");
                    String nRoom = read.next();
 
+                   Post doctorPost = new Post(namePost,nRoom);
+
                    Doctor doctor = new Doctor(docFamily, docName, docPatronymic,
-                           experience, post, nRoom);
+                           experience, doctorPost);
 
                    myData.addMyDoctor(doctor); // myDoctor.add();
 
@@ -58,13 +60,14 @@ public class Controller {
                    System.out.print("Введите номер телефона : ");
                    String nPhone = read.next();
 
+                   CardPatient cardPatient = new CardPatient(patFamily,patName,patPatronymic,oms,snils,nPhone);
+
                    System.out.print("Введите дату: ");
                    String date = read.next();
                    System.out.print("Введите время : ");
                    String time = read.next();
 
-                   RecordPatient recordPatient = new RecordPatient(docFamily, docName, docPatronymic, experience, post, nRoom,
-                           patFamily, patName, patPatronymic, oms, snils, nPhone, date, time);
+                   RecordPatient recordPatient = new RecordPatient(doctor,cardPatient, date, time);
 
                   myData.addMyRecordPatient(recordPatient); // myRecordPatient.add(recordPatient);
                }
@@ -101,9 +104,10 @@ public class Controller {
                        System.out.println("Колличество: " + String.valueOf(myData.sizeMyCardPatient()));
                        System.out.println("Список:");
                        for (int i = 0; i < myData.sizeMyCardPatient(); i++) {
-                           CardPatient cardPatient = new CardPatient("", "", "",
-                                   "", "", "");
+
+                           CardPatient cardPatient;
                            cardPatient = myData.getMyCardPatient(i); // myCardPatient.get(i);
+
                            System.out.println("ID: " + String.valueOf(i + 1));
                            System.out.println("Фамилия: " + cardPatient.getFamily());
                            System.out.println("Имя: " + cardPatient.getName());
@@ -119,26 +123,21 @@ public class Controller {
                case 4: {
 
                    if (myData.sizeMyRecordPatient() > 0) {
-                       System.out.println("Записи на прием");
+                       System.out.println("\nЗаписи на прием");
                        System.out.println("Колличество записей: " + String.valueOf(myData.sizeMyRecordPatient()));
                        System.out.println("Список:");
                        for (int i = 0; i < myData.sizeMyRecordPatient(); i++) {
 
-                           RecordPatient recordPatient = new RecordPatient("", "",
-                                   "", 0,
-                                   "", "", "", "", "",
-                                   "", "", "", "", "");
+                           RecordPatient recordPatient;
                            recordPatient = myData.getMyRecordPatient(i); // myRecordPatient.get(i);
 
-                           Doctor doctor = new Doctor("", "", "",
-                                   0, "", "");
+                           Doctor doctor;
                            doctor = recordPatient.getDoctor();
 
-                           Post post = new Post("", "");
+                           Post post;
                            post = doctor.getPost();
 
-                           CardPatient cardPatient = new CardPatient("", "", "",
-                                   "", "", "");
+                           CardPatient cardPatient;
                            cardPatient = recordPatient.getPatient();
 
                            System.out.println("ID: " + String.valueOf(i + 1));
@@ -167,11 +166,13 @@ public class Controller {
                        System.out.println("Колличество: " + String.valueOf(myData.sizeMyDoctor()));
                        System.out.println("Список:");
                        for (int i = 0; i < myData.sizeMyDoctor(); i++) {
-                           Doctor doctor = new Doctor("", "", "",
-                                   0, "", "");
+
+                           Doctor doctor;
                            doctor = myData.getMyDoctor(i); // myDoctor.get(i);
-                           Post post = new Post("", "");
+
+                           Post post;
                            post = doctor.getPost();
+
                            System.out.println("ID: " + String.valueOf(i + 1));
                            System.out.println("Фамилия доктора: " + doctor.getFamily());
                            System.out.println("Имя доктора: " + doctor.getName());

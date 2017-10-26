@@ -6,14 +6,13 @@ public class CardPatient extends Person{
     private String nomberSNILS;
     private String namberPhone;
 
-    public CardPatient(String _familyPatient, String _namePatient, String _patronymicPatient,
-                       String _nomberOMS, String _nomberSNILS, String _namberPhone){
+    public CardPatient(String lFamilyPatient, String lNamePatient, String lPatronymicPatient,
+                       String lNomberOMS, String lNomberSNILS, String lNamberPhone){
 
-        super(_familyPatient, _namePatient,_patronymicPatient);
-
-        this.nomberOMS = _nomberOMS;
-        this.nomberSNILS = _nomberSNILS;
-        this.namberPhone = _namberPhone;
+        super(lFamilyPatient, lNamePatient, lPatronymicPatient);
+        this.nomberOMS = lNomberOMS;
+        this.nomberSNILS = lNomberSNILS;
+        this.namberPhone = lNamberPhone;
     }
 
     public String getNomberOMS(){
